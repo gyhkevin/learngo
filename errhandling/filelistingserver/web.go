@@ -1,15 +1,15 @@
 package main
 
 import (
-	"net/http"
-	"imooc.com/kevin/learngo/errhandling/filelistingserver/filelisting"
-	"os"
 	"github.com/gpmgo/gopm/modules/log"
+	"imooc.com/kevin/learngo/errhandling/filelistingserver/filelisting"
+	"net/http"
+	"os"
 )
 
 type appHandler func(writer http.ResponseWriter, request *http.Request) error
 
-func errWrapper (handler appHandler) func(http.ResponseWriter, *http.Request) {
+func errWrapper(handler appHandler) func(http.ResponseWriter, *http.Request) {
 	return func(writer http.ResponseWriter, request *http.Request) {
 
 		defer func() {
@@ -33,7 +33,7 @@ func errWrapper (handler appHandler) func(http.ResponseWriter, *http.Request) {
 			}
 			// system error
 			code := http.StatusOK
-			switch  {
+			switch {
 			case os.IsNotExist(err):
 				code = http.StatusNotFound
 			case os.IsPermission(err):
@@ -53,7 +53,7 @@ type userError interface {
 
 func main() {
 	http.HandleFunc("/", errWrapper(filelisting.HandlerFileList))
-	err := http.ListenAndServe(":8888",nil)
+	err := http.ListenAndServe(":8888", nil)
 	if err != nil {
 		panic(err)
 	}

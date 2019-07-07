@@ -49,7 +49,7 @@ func sum(numbers ...int) int {
 	return s
 }
 
-func swap(a, b int) (int, int){
+func swap(a, b int) (int, int) {
 	return b, a
 }
 

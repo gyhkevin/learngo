@@ -10,6 +10,7 @@ func main()  {
 
 	q.Push(2)
 	q.Push(3)
+	fmt.Println(q)
 	fmt.Println(q.Pop())
 	fmt.Println(q.Pop())
 	fmt.Println(q.IsEmpty())

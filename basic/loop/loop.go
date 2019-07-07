@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func convertToBin(n int) string  {
+func convertToBin(n int) string {
 	result := ""
 	for ; n > 0; n /= 2 {
 		lsb := n % 2
@@ -18,7 +18,7 @@ func convertToBin(n int) string  {
 	return result
 }
 
-func printFile(filename string)  {
+func printFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
 		panic(err)
@@ -26,7 +26,7 @@ func printFile(filename string)  {
 	printFileContents(file)
 }
 
-func printFileContents(reader io.Reader)  {
+func printFileContents(reader io.Reader) {
 	scanner := bufio.NewScanner(reader)
 
 	for scanner.Scan() {
@@ -34,9 +34,9 @@ func printFileContents(reader io.Reader)  {
 	}
 }
 
-func main()  {
+func main() {
 	fmt.Println(
-		convertToBin(5), // 101
+		convertToBin(5),  // 101
 		convertToBin(13), // 1101
 		convertToBin(390938201),
 	)
